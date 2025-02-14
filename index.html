@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blooming Flower</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #87CEEB, #E0F6FF);
+            overflow: hidden;
+        }
+
+        .flower-container {
+            text-align: center;
+            position: relative;
+        }
+
+        .flower {
+            position: relative;
+            animation: bloom 1.5s ease-out forwards;
+            transform-origin: bottom;
+        }
+
+        .petals {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 20px auto;
+        }
+
+        .petal {
+            position: absolute;
+            width: 60px;
+            height: 90px;
+            background: linear-gradient(45deg, #FF69B4, #FF1493);
+            border-radius: 30px 30px 0 30px;
+            transform-origin: bottom right;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .petal:nth-child(1) { transform: rotate(0deg); }
+        .petal:nth-child(2) { transform: rotate(45deg); }
+        .petal:nth-child(3) { transform: rotate(90deg); }
+        .petal:nth-child(4) { transform: rotate(135deg); }
+        .petal:nth-child(5) { transform: rotate(180deg); }
+        .petal:nth-child(6) { transform: rotate(225deg); }
+        .petal:nth-child(7) { transform: rotate(270deg); }
+        .petal:nth-child(8) { transform: rotate(315deg); }
+
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(#FFD700, #FFA500);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255,215,0,0.5);
+            z-index: 2;
+        }
+
+        .stem {
+            position: absolute;
+            width: 8px;
+            height: 0;
+            background: #228B22;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -120px;
+            animation: growStem 1.5s ease-out forwards;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 30px;
+            height: 20px;
+            background: #32CD32;
+            border-radius: 0 50px 50px 0;
+            transform: rotate(45deg);
+            animation: growLeaf 1s ease-out 1s forwards;
+            opacity: 0;
+        }
+
+        .leaf.left { left: -40px; bottom: -80px; }
+        .leaf.right { right: -40px; bottom: -80px; transform: rotate(-45deg) scaleX(-1); }
+
+        .message {
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            font-size: 2em;
+            color: #4B0082;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+        }
+
+        @keyframes bloom {
+            0% { transform: scale(0) rotate(-15deg); }
+            80% { transform: scale(1.1) rotate(5deg); }
+            100% { transform: scale(1) rotate(0); }
+        }
+
+        @keyframes growStem {
+            from { height: 0; }
+            to { height: 200px; }
+        }
+
+        @keyframes growLeaf {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="flower-container">
+        <div class="flower">
+            <div class="stem"></div>
+            <div class="petals">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="center"></div>
+            </div>
+            <div class="leaf left"></div>
+            <div class="leaf right"></div>
+        </div>
+        <div class="message">Bu gözəl gül sənin üçündür, Güliçka! 🌼</div>
+    </div>
+</body>
+</html>
